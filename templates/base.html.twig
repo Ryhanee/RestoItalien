@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+       
+        
+<nav id="jf-navbar" class="navbar is-transparent header-navbar sticky has-shadow">
+    <div class="container">
+      <div class="navbar-brand">
+        <div class="navbar-burger burger" data-target="header-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a class="navbar-item" href="/">
+            <img alt="Logo" class="is-hidden-touch" src="//africa-public.food.jumia.com/assets/production/tn/layout/themes/capricciosa_hellofood/images/fr/jumiafood-logo.png?v=1607511693">
+        <img class="is-hidden-desktop" src="/images/jumia-food-mobile.svg?v=1596116892" alt="Logo">
+    </a>
+      </div>
+      <div id="header-menu" class="navbar-menu has-text-centered-touch">
+        <div class="navbar-end mhl-mobile">
+                        <a class="navbar-item mhxs is-hidden-desktop" href="/prime">
+    <div class="dir-row fvh-ctr">
+      <img class="icon-w-16 mrs" src="/images/prime-icon.svg?v=1596116892">
+      <span class="is-uppercase">Jumia Prime</span>
+    </div>
+  </a>
+                                          
+                      <a class="navbar-item mhxs is-hidden-desktop" href="/restaurants">
+    <div class="dir-col is-inline-block-touch">
+        <span class="is-uppercase">Restaurants</span>
+    </div>
+</a>
+                      <a class="navbar-item mhxs" href="/contents/contact.htm">
+    <div class="dir-col is-inline-block-touch">
+        <span class="is-uppercase">Aide</span>
+    </div>
+</a>
+                                              <div class="navbar-item">
+                <a class="button is-primary is-small is-size-5 is-fullwidth-touch has-text-weight-bold is-uppercase" href="/login" data-url="/login" data-card-class="small">
+                    Se connecter / S'inscrire
+                </a>
+            </div>
+                    </div>
+      </div>
+    </div>
+  </nav>
+ {% block body %}{% endblock %}
+        <script src="/js/jquery-3.5.1.slim.min.js" ></script>
+        <script src="/js/popper.min.js" ></script>
+        <script src="/js/bootstrap.min.js" ></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
