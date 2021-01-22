@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{%  block title %}
+    {{ resto.libelle }}
+{% endblock %}
+
+{% block body %}
+
+ <div class="has-text-centered-touch resto-title" style="background-image: url({{ resto.image }});">
+     <div class="container">
+         <h1>{{ resto.libelle }}</h1>
+
+     </div>
+
+
+ </div>
+<div class="container">
+    <h2>Menu</h2>
+    <ul>
+    {% for menu in resto.menus %}
+    <li>
+        <ul>
+            {% for plat in menu.plats %}
+            <li>
+                {{ plat.libelle }}
+            </li>
+            {% endfor %}
+        </ul>
+        </li>
+
+    {% endfor %}
+    </ul>
+
+
+</div>
+
+{% endblock %}
