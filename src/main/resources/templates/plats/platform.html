@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>View Ingredient</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}">
+
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.5.1/jquery.min.js}">
+
+    </script>
+
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <form  th:object="${plats}" th:action="@{'/plats'} " method="post">
+             <!--   <input type="hidden" th:field="*{id}"/>
+                <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                    <p>Please Correct Errors Below</p>
+                </div>-->
+
+                <div class="pannel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="panel-title">Edit Plat Information</h1>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3 form-group" th:class="${#fields.hasErrors('id')}
+                                ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                    <label>Id:</label>
+                                    <input type="text" class="form-control" th:field="*{id}"/>
+                                    <span class="help-block" th:if="${#fields.hasErrors('id')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('id')}" th:text="${err}"/>
+                                        </ul>
+                                    </span>
+                                </div>
+                                <div class="col-md-3 form-group" th:class="${#fields.hasErrors('nom')}
+                                ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                    <label>Nom:</label>
+                                    <input type="text" class="form-control" th:field="*{nom}"/>
+                                    <span class="help-block" th:if="${#fields.hasErrors('nom')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('nom')}" th:text="${err}"/>
+                                        </ul>
+                                    </span>
+                                </div>
+
+                                <div class="col-md-3 form-group" th:class="${#fields.hasErrors('prix')}
+                                ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                    <label>Prix:</label>
+                                    <input type="number" step="0.01" class="form-control" th:field="*{prix}"/>
+                                    <span class="help-block" th:if="${#fields.hasErrors('prix')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('prix')}" th:text="${err}"/>
+                                        </ul>
+                                    </span>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

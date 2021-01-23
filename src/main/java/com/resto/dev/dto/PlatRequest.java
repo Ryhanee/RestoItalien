@@ -10,13 +10,13 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 public class PlatRequest {
- /*   private int id;
+    private Long id;
     @NotBlank
-    @Size(min = 5, max = 100)
+    @Size(min = 3, max = 100)
     private String nom;
     @Positive
     private Double prix;
-*/
+
 
 
 }

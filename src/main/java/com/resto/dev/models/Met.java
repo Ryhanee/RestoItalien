@@ -11,11 +11,19 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Met {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String nom;
     private double prix;
 
+    public Met(Long id, String nom, double prix) {
+        this.id = id;
+        this.nom = nom;
+        this.prix = prix;
+    }
 
+    public Met() {
+
+    }
 }
