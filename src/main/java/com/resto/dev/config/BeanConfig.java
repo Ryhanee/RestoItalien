@@ -1,11 +1,12 @@
 package com.resto.dev.config;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 @Configuration
-public class Bean {
+public class BeanConfig {
 
-        @org.springframework.context.annotation.Bean
+        @Bean
         public ModelMapper getModelMapper() {
             return new ModelMapper();
         }

@@ -16,6 +16,7 @@ import java.util.NoSuchElementException;
 public class PlatServiceImpl implements PlatService {
 
     private PlatRepository platRepos;
+    private ModelMapper mapper;
 
     @Override
     public List<Plat> getPlats() {
@@ -28,12 +29,10 @@ public class PlatServiceImpl implements PlatService {
         return platRepos.findById(id)
                 .orElseThrow(()-> new NoSuchElementException("Plat with this id is not found"));
     }
-    private PlatRepository reposPlat;
-    private ModelMapper mapper;
     @Override
     public void deleteById(Long id) {
 
-        reposPlat.deleteById(id);
+        platRepos.deleteById(id);
 
     }
     @Override
@@ -41,14 +40,14 @@ public class PlatServiceImpl implements PlatService {
         // save
         Plat platEntity = mapper.map(request, Plat.class);
 
-        reposPlat.save(platEntity);
+        platRepos.save(platEntity);
 
         // update
         return null;
     }
     @Override
     public PlatRequest findPlatRequestById(Long id) {
-        Plat pl =reposPlat.findById(id)
+        Plat pl =platRepos.findById(id)
                 .orElseThrow(()-> new NoSuchElementException("no plat with this id"));
 
         PlatRequest req = mapper.map(pl, PlatRequest.class);

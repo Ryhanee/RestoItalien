@@ -41,26 +41,19 @@ public String getShowPlat(@PathVariable("id") Long id, Model model) {
     @GetMapping("/plats/add")
     public String newPlat(Long id, Model model) {
         PlatRequest plat = new PlatRequest();
-        plat.setId(id);
-        model.addAttribute("plats", new PlatRequest());
+        model.addAttribute("plats", plat);
         return "plats/platform";
     }
 
     // save Ingredient
-    @PostMapping("/plats/add")
-    public String saveOrUpdate(@Valid @ModelAttribute("plat")PlatRequest plat, BindingResult bindingResult,
-                               @PathVariable("id") Long id, Model model) {
+    @PostMapping("/plats/{id}")
+    public String saveOrUpdate(@Valid @ModelAttribute("plat")PlatRequest plat, BindingResult bindingResult , Long id, Model model) {
         // if errors of validation return to form
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("plats", plat);
 
-         //   model.addAttribute("uomList", uomService.listUOMs());
-            return "plats/platform";
-        }
+         platservice.savePlat(plat);
 
-        platservice.savePlat(plat);
 
-        return "redirect:/plats/"+ id + "/show";
+        return "redirect:/plats";
     }
 
 }

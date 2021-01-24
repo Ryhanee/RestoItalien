@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
 
-            <form  th:object="${plats}" th:action="@{'/plats'} " method="post">
+            <form  th:object="${plats}" th:action="@{'/plats/' +${plats.id}} " method="post">
              <!--   <input type="hidden" th:field="*{id}"/>
                 <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
                     <p>Please Correct Errors Below</p>
@@ -37,16 +37,8 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-3 form-group" th:class="${#fields.hasErrors('id')}
-                                ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
-                                    <label>Id:</label>
-                                    <input type="text" class="form-control" th:field="*{id}"/>
-                                    <span class="help-block" th:if="${#fields.hasErrors('id')}">
-                                        <ul>
-                                            <li th:each="err : ${#fields.errors('id')}" th:text="${err}"/>
-                                        </ul>
-                                    </span>
-                                </div>
+
+
                                 <div class="col-md-3 form-group" th:class="${#fields.hasErrors('nom')}
                                 ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
                                     <label>Nom:</label>
