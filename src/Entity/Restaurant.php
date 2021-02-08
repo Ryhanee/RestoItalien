@@ -56,6 +56,14 @@ class Restaurant
      */
     private $author;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $specialite;
+
+
+
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -69,9 +77,9 @@ class Restaurant
      * @return void
      */
     public function initializeSlug() {
-        if(empty($this->slug)){
+        if(empty($this->libelle)){
             $slugify = new Slugify();
-            $this->slug = $slugify->slugify($this->libelle);
+            $this->libelle = $slugify->slugify($this->libelle);
         }
     }
 
@@ -206,4 +214,20 @@ class Restaurant
 
         return $this;
     }
+
+    public function getSpecialite(): ?string
+    {
+        return $this->specialite;
+    }
+
+    public function setSpecialite(?string $specialite): self
+    {
+        $this->specialite = $specialite;
+
+        return $this;
+    }
+
+
+
+
 }

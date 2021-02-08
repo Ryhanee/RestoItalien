@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2fdc267b-ebad-4fee-a65a-b734593549d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/account/login.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/profile.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/register.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/restaurants/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+    <list default="true" id="2fdc267b-ebad-4fee-a65a-b734593549d8" name="Default Changelist" comment="deuxieme commit avec erreur restaurant">
+      <change afterPath="$PROJECT_DIR$/templates/restaurants/add.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/restaurants/list.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/restaurants/update.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RestaurantsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RestaurantsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Restaurant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/restaurants/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/restaurants/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/restaurants/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/restaurants/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,14 +142,23 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="sqlserver" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../public_html" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/PARCUS/BeSoft/20190823_besoft_89eb54035cb11c494166_20201111101421_archive" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\symfonyProject\resto\templates\restaurants" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -179,6 +187,14 @@
       <workItem from="1611164851473" duration="9557000" />
       <workItem from="1611216279698" duration="63000" />
       <workItem from="1611343427316" duration="612000" />
+      <workItem from="1612299126844" duration="2551000" />
+      <workItem from="1612646551602" duration="5784000" />
+      <workItem from="1612726723255" duration="1062000" />
+      <workItem from="1612727830444" duration="187000" />
+      <workItem from="1612728107226" duration="708000" />
+      <workItem from="1612728951854" duration="5457000" />
+      <workItem from="1612775231261" duration="438000" />
+      <workItem from="1612808035275" duration="6137000" />
     </task>
     <servers />
   </component>
@@ -196,6 +212,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="deuxieme commit avec erreur restaurant" />
+    <option name="LAST_COMMIT_MESSAGE" value="deuxieme commit avec erreur restaurant" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

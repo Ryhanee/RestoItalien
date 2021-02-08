@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 {%  block title %}
-    {{ resto.libelle }}
 {% endblock %}
 
 {% block body %}
 
- <div class="has-text-centered-touch resto-title" style="background-image: url({{ resto.image }});">
+ <div class="has-text-centered-touch resto-title" style="background-image: url({{ restos.image }});">
      <div class="container">
-         <h1>{{ resto.libelle }}</h1>
-
+         <h1>{{ restos.libelle }}</h1>
      </div>
 
 
@@ -16,7 +14,7 @@
 <div class="container">
     <h2>Menu</h2>
     <ul>
-    {% for menu in resto.menus %}
+    {% for menu in restos.menus %}
     <li>
         <ul>
             {% for plat in menu.plats %}

@@ -1,0 +1,22 @@
+<h1>Liste des modèles</h1>
+<table border="1">
+    <tr>
+        <td>id</td>
+        <td>Libelle</td>
+        <td>speciality</td>
+        <td>telephone</td>
+        <td>Supprimer</td>
+        <td>Modifier</td>
+    </tr>
+    {% for resto in restau %}
+        <tr>
+            <td>{{ resto.idResto }}</td>
+            <td>{{ resto.libelle }}</td>
+            <td>{{ resto.specialite}}</td>
+            <td>{{ resto.tel}}</td>
+            <td><a href="{{ path("delete_resto", {'id' : resto.idResto}) }}" >Supprimer</a> </td>
+            <td><a href="{{ path("update_resto", {'id' : resto.idResto}) }}" >Modifier</a> </td>
+        </tr>
+    {% endfor %}
+
+</table>
