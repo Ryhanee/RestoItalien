@@ -5,56 +5,18 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <form action="" method="POST">
-                Recherche : <input type="text" name="input_recherche"/>
-                <input type="submit" name="rechercher" value="Rechercher"/>
-            </form>
+            {% for resto in restos %}
+                <div class="m-4">
+                    <div class="card bg-light mb-3" style="max-width: 20rem;">
+                        <div class="card-header"><a href="{{ path('show_resto', {'libelle':resto.libelle}) }}">{{ resto.libelle }}</a></div>
+                        <img src="{{ resto.image }}" style="height:200px; width:100%;">
+                        <div class="card-body">
+                            <h4 class="card-title">Dark card title</h4>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 
-            {% if restaurants is empty %}
-
-                Aucun restaurant trouvé
-
-            {% else %}
-                <table border="1">
-                    <tr>
-                        <th>Libelle</th>
-                        <th>specialite</th>
-                    </tr>
-                    {% for modele in restaurants %}
-                        <tr>
-                            <td>{{ modele.idResto }}</td>
-                            <td>{{ modele.libelle }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-
-                {% for resto in restos %}
-                    <div class="m-4">
-                        <div class="card bg-light mb-3" style="max-width: 20rem;">
-                            <div class="card-header"><a href="{{ path('show_resto', {'libelle':resto.libelle}) }}">{{ resto.libelle }}</a></div>
-                            <img src="{{ resto.image }}" style="height:200px; width:100%;">
-                            <div class="card-body">
-                                <h4 class="card-title">{{ resto.specialite }}</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-                            </div>
                         </div>
                     </div>
-                {% endfor %}
-            {% endif %}
-
-            {% for resto in restos %}
-            <div class="m-4">
-                <div class="card bg-light mb-3" style="max-width: 20rem;">
-                    <div class="card-header"><a href="{{ path('show_resto', {'libelle':resto.libelle}) }}">{{ resto.libelle }}</a></div>
-                    <img src="{{ resto.image }}" style="height:200px; width:100%;">
-                    <div class="card-body">
-                        <h4 class="card-title">Dark card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-                    </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>

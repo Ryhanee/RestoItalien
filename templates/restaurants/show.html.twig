@@ -4,9 +4,9 @@
 
 {% block body %}
 
- <div class="has-text-centered-touch resto-title" style="background-image: url({{ restos.image }});">
+ <div class="has-text-centered-touch resto-title" style="background-image: url({{ resto.image }});">
      <div class="container">
-         <h1>{{ restos.libelle }}</h1>
+         <h1>{{ resto.libelle }}</h1>
      </div>
 
 
@@ -14,11 +14,15 @@
 <div class="container">
     <h2>Menu</h2>
     <ul>
-    {% for menu in restos.menus %}
+    {% for menu in resto.menus %}
     <li>
+        {{ menu.
+        }}
         <ul>
+
             {% for plat in menu.plats %}
             <li>
+
                 {{ plat.libelle }}
             </li>
             {% endfor %}
@@ -26,7 +30,6 @@
         </li>
 
     {% endfor %}
-    </ul>
 
 
 </div>

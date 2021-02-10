@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fdc267b-ebad-4fee-a65a-b734593549d8" name="Default Changelist" comment="deuxieme commit avec erreur restaurant">
-      <change afterPath="$PROJECT_DIR$/templates/restaurants/add.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/restaurants/list.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/restaurants/update.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RestaurantsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RestaurantsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Restaurant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/RestaurantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/RestaurantRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/restaurants/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/restaurants/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/restaurants/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/restaurants/show.html.twig" afterDir="false" />
     </list>
@@ -194,8 +191,20 @@
       <workItem from="1612728107226" duration="708000" />
       <workItem from="1612728951854" duration="5457000" />
       <workItem from="1612775231261" duration="438000" />
-      <workItem from="1612808035275" duration="6137000" />
+      <workItem from="1612808035275" duration="7077000" />
+      <workItem from="1612868181900" duration="94000" />
+      <workItem from="1612893712916" duration="14286000" />
+      <workItem from="1612950606180" duration="715000" />
+      <workItem from="1612984527158" duration="1063000" />
     </task>
+    <task id="LOCAL-00001" summary="deuxieme commit avec erreur restaurant">
+      <created>1612819654428</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1612819654428</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
