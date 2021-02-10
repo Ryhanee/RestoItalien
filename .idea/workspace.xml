@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2fdc267b-ebad-4fee-a65a-b734593549d8" name="Default Changelist" comment="deuxieme commit avec erreur restaurant">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RestaurantsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RestaurantsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Restaurant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Restaurant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/RestaurantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/RestaurantRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/restaurants/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/restaurants/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/restaurants/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/restaurants/show.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="2fdc267b-ebad-4fee-a65a-b734593549d8" name="Default Changelist" comment="deuxieme commit avec restaurant config" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
@@ -157,6 +155,19 @@
       <recent name="C:\xampp\htdocs\symfonyProject\resto\templates\restaurants" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -195,7 +206,7 @@
       <workItem from="1612868181900" duration="94000" />
       <workItem from="1612893712916" duration="14286000" />
       <workItem from="1612950606180" duration="715000" />
-      <workItem from="1612984527158" duration="1063000" />
+      <workItem from="1612984527158" duration="1399000" />
     </task>
     <task id="LOCAL-00001" summary="deuxieme commit avec erreur restaurant">
       <created>1612819654428</created>
@@ -204,7 +215,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612819654428</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="deuxieme commit avec restaurant">
+      <created>1612986119117</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1612986119117</updated>
+    </task>
+    <task id="LOCAL-00003" summary="deuxieme commit avec restaurant config">
+      <created>1612986343768</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1612986343768</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,7 +249,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="deuxieme commit avec erreur restaurant" />
-    <option name="LAST_COMMIT_MESSAGE" value="deuxieme commit avec erreur restaurant" />
+    <MESSAGE value="deuxieme commit avec restaurant" />
+    <MESSAGE value="deuxieme commit avec restaurant config" />
+    <option name="LAST_COMMIT_MESSAGE" value="deuxieme commit avec restaurant config" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
