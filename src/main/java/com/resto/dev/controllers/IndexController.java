@@ -14,15 +14,7 @@ public class IndexController {
 
     // call service
     private TicketService Tservices;
-    private PlatService Pservices;
-    // to get all Recipes
 
-    // add recipes to model of index.html
-    @GetMapping({"/plats"})
-    public String getIndex(Model model) {
-        model.addAttribute("plat", Pservices.getPlats());
-        return "plats/plat";
-    }
 
 
 }

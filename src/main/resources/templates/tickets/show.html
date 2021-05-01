@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show ingredients</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}">
+
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.5.1/jquery.min.js}">
+
+    </script>
+
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <h1 class="panel-title" th:text="${tickets.getDate()}">Ticket</h1>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="list-group" th:if="${not #lists.isEmpty(tickets)}">
+                        <ul th:each="ticket : ${tickets}">
+                         <li th:text="'Numero de ticket: '+ ${tickets.numero}"> 124 </li>
+                            <li th:text="'Client: '+${tickets.getClients().getNom()} + ' '+${tickets.getClients().getPrenom()}"> Taste Gooood </li>
+                            <li th:text="'Numero de la table: '+${tickets.getTable().numero}"> Taste Gooood </li>
+                          <li th:text="' Type de la table: '+${tickets.getTable().getType()}"> Taste Gooood </li>
+                        </ul>
+                    <span th:text="${tickets.addition}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

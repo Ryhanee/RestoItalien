@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show plats</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}">
+
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.5.1/jquery.min.js}">
+
+    </script>
+
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-10 ">
+                            <h1 class="panel-title">Plats</h1>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-default" href="" th:href="@{'/plats/add'}"
+                               role="button">Ajouter</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive" >
+                        <table class="table table-hover">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th> ID </th>
+                                <th> nom </th>
+                                <th> Prix </th>
+                                <th> Voir </th>
+                                <th> Update </th>
+                                <th> Delete </th>
+                            </tr>
+                            </thead>
+
+                            <tr th:each="plats: ${plat}">
+                                <td th:text="${plats.id}"> 124 </td>
+                                <td th:text="${plats.nom}"> Taste Gooood </td>
+                                <td th:text="${plats.prix}"> Taste Gooood </td>
+                                <td><a href="#" th:href="@{'/plats/'+ ${plats.id} +'/show'}">Voir</a> </td>
+                                <!--                      <td> <a href="#" th:href="@{'/recipe/'+${recipeId}+'/ingredient/'+${ingredient.id}+'/update'}">Update</a>
+                                                      <td> <a href="#" th:href="@{'/recipe/'+${recipeId}+'/ingredient/'+${ingredient.id}+'/delete'}">Delete</a> -->
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

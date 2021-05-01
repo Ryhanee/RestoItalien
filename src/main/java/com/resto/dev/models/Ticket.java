@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -34,4 +35,6 @@ public class Ticket {
 
     @ManyToOne
     private Clients clients;
+
+
 }
