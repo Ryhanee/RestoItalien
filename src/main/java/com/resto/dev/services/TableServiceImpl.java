@@ -4,13 +4,13 @@ import com.resto.dev.dto.PlatRequest;
 import com.resto.dev.dto.TableeRequest;
 import com.resto.dev.models.Plat;
 import com.resto.dev.models.Tablee;
+import com.resto.dev.models.Ticket;
 import com.resto.dev.repos.TableeRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,4 +55,16 @@ public class TableServiceImpl implements TableService {
         tableRepos.deleteById(id);
 
     }
+    public TableeRequest mostReservedTable(){
+        Map<Long,Integer> listTableWithkey=new HashMap<>();
+        List<Tablee> tables=tableRepos.findAll();
+        for(Tablee table:tables){
+            listTableWithkey.put(table.getNumero(),table.getTicketTable().size());
+        }
+        Long toptable= listTableWithkey.entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).get().getKey();
+
+        Tablee table=tableRepos.findById(toptable).get();
+        return mapper.map(table,TableeRequest.class);
+    }
+
 }

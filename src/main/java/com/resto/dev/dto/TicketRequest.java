@@ -25,11 +25,11 @@ private Long id;
     @Positive
     private float addition;
 
-    @NotBlank
-    @Size(min = 3, max = 100)
-    private String nom;
-    @Positive
-    private Double prix;
+//    @NotBlank
+//    @Size(min = 3, max = 100)
+//    private String nom;
+//    @Positive
+//    private Double prix;
 
     private PlatRequest plats;
     private PlatRequest dessert;

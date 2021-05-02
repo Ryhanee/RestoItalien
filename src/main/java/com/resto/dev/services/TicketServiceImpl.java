@@ -17,6 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.chrono.ChronoLocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,6 +32,7 @@ public class TicketServiceImpl implements TicketService {
     private TableeRepository repotable;
     private ClientRepository repoClients;
     private PlatRepository platRepos;
+    private ClientRepository clientRepository;
     private ModelMapper mapper = new ModelMapper();
 
     @Override
@@ -82,28 +86,18 @@ public class TicketServiceImpl implements TicketService {
         return ticket;
     }
 
- /*   public TableeRequest mostReservedTable(){
-        Map<Long,Integer> listTableWithkey=new HashMap<>();
-        List<Tablee> tables=repotable.findAll();
-        for(Tablee table:tables){
-            listTableWithkey.put(table.getIdtable(),table.getTicket().size());
-        }
-        Long toptable= listTableWithkey.entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).get().getKey();
 
-        Tablee table=repotable.findById(toptable).get();
-        return mapper.map(table,TableeRequest.class);
-    }
-    public String RevenuejSm(){
-        List<Ticket> tickets=repoticket.findAll();
+    public String RevenueMSD(){
+        List<Ticket> tickets=ticketRepos.findAll();
         double revenueJours=0,revenueSemaine=0,revenuemois=0;
         for (Ticket ticket:tickets){
-            if (ticket.getDate().isAfter(Instant.now().minus(Period.ofDays(30)))){
+            if (ticket.getDate().isAfter(ChronoLocalDateTime.from(Instant.now().minus(Period.ofDays(30))))){
                 revenuemois=revenuemois+ticket.getAddition();
             }
-            if (ticket.getDate().isAfter(Instant.now().minus(Period.ofDays(7)))){
+            if (ticket.getDate().isAfter(ChronoLocalDateTime.from(Instant.now().minus(Period.ofDays(7))))){
                 revenueSemaine=revenueSemaine+ticket.getAddition();
             }
-            if (ticket.getDate().isAfter(Instant.now().minus(Period.ofDays(1)))){
+            if (ticket.getDate().isAfter(ChronoLocalDateTime.from(Instant.now().minus(Period.ofDays(1))))){
                 revenueJours=revenueJours+ticket.getAddition();
             }
         }
@@ -111,11 +105,11 @@ public class TicketServiceImpl implements TicketService {
         return "Revenue moins derniere :"+revenuemois+"\n Revenue semaine derniere :"+revenueSemaine+"\n Revenue jour derniere :"+revenueJours;
     }
 
-    public Instant mostresrvedday(int id) {
-        Optional  <Clients> Clients=repoClients.findById(id);
-        Instant dateplusrepter=Instant.now();
+    public LocalDateTime mostReservedDay(long id) {
+        Optional  <Clients> Clients=clientRepository.findById(id);
+        LocalDateTime dateplusrepter= LocalDateTime.from(Instant.now());
         if(Clients.isPresent()){
-            dateplusrepter= Clients.get().getTicket().stream().map(ticket->ticket.getDate())
+            dateplusrepter= Clients.get().getTickets().stream().map(ticket->ticket.getDate())
                     .collect(Collectors.groupingBy(I->I, Collectors.counting()))
                     .entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).get().getKey();
         }else throw new NoSuchElementException("Clients id est incorrect ");
@@ -123,8 +117,8 @@ public class TicketServiceImpl implements TicketService {
     }
 
 
-    public double revenudansperiode(Instant debutperiode, Instant finperiode) {
-        List<Ticket> tickets=repoticket.findAll();
+    public double revenuDansPeriode(LocalDateTime debutperiode, LocalDateTime finperiode) {
+        List<Ticket> tickets=ticketRepos.findAll();
         double somme=0;
         for(Ticket ticket:tickets){
             if(ticket.getDate().isAfter(debutperiode)&&ticket.getDate().isBefore(finperiode)){
@@ -133,40 +127,21 @@ public class TicketServiceImpl implements TicketService {
         }
         return somme;
     }
-    public Clients ClientsplusFidel(Instant debutperiode, Instant finperiode){
-        List<Ticket>tickets=repoticket.findAll();
-        List<Ticket>ticketss=new ArrayList<>();
+
+
+    public Clients ClientsplusFidel(LocalDateTime debutperiode, LocalDateTime finperiode){
+        List<Ticket>tickets=ticketRepos.findAll();
+        List<Ticket>tikets=new ArrayList<>();
 
         for(Ticket ticket:tickets){
             if(ticket.getDate().isAfter(debutperiode)&&ticket.getDate().isBefore(finperiode)){
-                ticketss.add(ticket);
+                tikets.add(ticket);
             }
         }
-        List<Clients> cl=  ticketss.stream().map(tic->tic.getClients()).collect(Collectors.toList());
+        List<Clients> cl=  tikets.stream().map(tic->tic.getClients()).collect(Collectors.toList());
 
-        Clients fidel=cl.stream().collect(Collectors.groupingBy(l->l, Collectors.counting())).entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).get().getKey();
-        return fidel;
+        Clients fidele=cl.stream().collect(Collectors.groupingBy(l->l, Collectors.counting())).entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).get().getKey();
+        return fidele;
     }
-/*    public MetReponse mostBuyedPlat(Instant begin,Instant end){
-        List<Ticket> tickets=repoticket.findAll();
-        List<Long> idList=new ArrayList<>();
-        for (Ticket ticket:tickets){
-            //check if ticket is in the given time interval
-            if(ticket.getDate().isAfter(begin)&&ticket.getDate().isBefore(end)){
 
-                for (MetEntity met:ticket.getMet()){
-                    //filtering Plat out from list of mets
-                    if(met instanceof de.tekup.project.Modele.Plat){
-                        idList.add(met.getIdmet());
-                    }
-                }
-            }
-        }
-        Long metid= idList.stream().collect(Collectors.groupingBy(s -> s, Collectors.counting()))
-                .entrySet()
-                .stream()
-                .max(Comparator.comparing(Map.Entry::getValue)).get().getKey();
-        MetEntity met=repomet.findById(metid).get();
-        return mapper.map(met,MetReponse.class);
-    }*/
 }

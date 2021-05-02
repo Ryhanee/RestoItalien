@@ -23,8 +23,9 @@
         // Total Price Calculator
         function calc() {
             // Get value from input
-            // let number = parseFloat($('#no-text').val() || 0);
+
             let tots = 0;
+            let sup = 0;
 
             // Add Checkbox values
             $(".checks:checked").each(function() {
@@ -33,12 +34,19 @@
 
             });
 
+
+
+            $("#supl").keyup(function() {
+                 sup += parseFloat($(this).val());
+
+            });
+
             // Update with new Number
             $('#tots').val((tots).toFixed(2));
         }
 
         $(function() {
-            $(document).on('change', '.checks', calc);
+            $(document).on('change', '.checks','#supl', calc);
             calc();
         });
     </script>
@@ -104,20 +112,23 @@
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>Table:</label>
-                                    <select class="form-control" th:field="*{table.numero}">
+                                    <select class="form-control" name="table_numero">
                                         <option th:each="tables : ${tableList}"
                                                 th:value="${tables.numero}"
                                                 th:selected="${tables.numero.equals(tickets.getTable().numero)}"
                                                 th:text="${tables.numero}+': '+${tables.type}+' max '+${tables.nbCouvert}+' couverts '">Each</option>
                                     </select>
                                     <label>Nombre des couverts</label>
-                                    <input type="number" th:field="*{nbCouvert}">
+                                    <input type="number" name="nb_couvert">
+                                    <label>Supplement</label>
+                                    <input type="text" id="supl">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>Plats:</label>
                                     <input type="checkbox"  class="checks" th:each="plats : ${platsList}" th:value="${plats.prix}"
                                            th:text="${plats.nom}+': '+${plats.prix}" id="plat"
                                            th:data-price="${plats.prix}" ><br>
+
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>Addition</label>
@@ -127,10 +138,12 @@
 
                                 <div class="col-md-6 form-group">
                                     <label>Clients:</label>
-
-
-                                    <input type="text" name="clients_id">
-                                    <!--                                    <span id="tots">0.00</span>-->
+                                    <select class="form-control" name="clients_id">
+                                        <option th:each="client : ${clients}"
+                                                th:value="${client.id}"
+                                                th:text="${client.nom}"
+                                        th:selected="${client.id}">Each</option>
+                                    </select>
                                 </div>
 
                             </div>

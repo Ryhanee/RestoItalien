@@ -4,8 +4,10 @@ package com.resto.dev.controllers;
 import com.resto.dev.dto.PlatRequest;
 import com.resto.dev.dto.TableeRequest;
 import com.resto.dev.dto.TicketRequest;
+import com.resto.dev.models.Clients;
 import com.resto.dev.models.Plat;
 import com.resto.dev.models.Ticket;
+import com.resto.dev.services.ClientService;
 import com.resto.dev.services.PlatService;
 import com.resto.dev.services.TableService;
 import com.resto.dev.services.TicketService;
@@ -16,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -25,6 +28,7 @@ public class TicketController {
     private TicketService serviceticket;
     private TableService tableService;
     private PlatService platService;
+    private ClientService clientService;
 
     @GetMapping
     public List<Ticket> getAll(){
@@ -37,32 +41,12 @@ public class TicketController {
         return "tickets/show";
     }
 
- /*   @GetMapping("/plats/{id}/show")
-    public String getShowPlat(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("plats", platservice.getPlatById(id));
-        return "plats/show";
-    }
-
-   /* @GetMapping("clientjour/{id}")
-    public Instant clientjour(@PathVariable("id") Integer id) {
-        return serviceticket.mostresrvedday(id);
-    }
-    @GetMapping("/most")
-    public Tablereponse most() {
-        return serviceticket.mostReservedTable();
-    }
-    @GetMapping("/x")
-    public String Revnue() {
-        return serviceticket.RevenuejSm();
-    }
-*/
-
     @GetMapping({"/tickets"})
     public String getTables(Model model) {
         model.addAttribute("tickets", serviceticket.getTickets());
         return "tickets/index";
     }
-    // Add new Ingredient
+    // Add new ticket
     @GetMapping("/ticket/add")
     public String newTicket(Long numero, Model model) {
         TicketRequest ticket = new TicketRequest();
@@ -73,7 +57,6 @@ public class TicketController {
         return "tickets/ticketForm";
     }
 
-    // save Ingredient
     @PostMapping("/tickets/{id}")
     public String saveOrUpdate(@Valid @ModelAttribute("ticket")TicketRequest ticket, BindingResult bindingResult , @PathVariable("id") Long numero, Model model) {
         // if errors of validation return to form
@@ -81,8 +64,7 @@ public class TicketController {
             model.addAttribute("tickets", ticket);
             model.addAttribute("tableList", tableService.listTables());
             model.addAttribute("platsList", platService.getPlats());
-//            Plat pl = new Plat();
-//            double prix =  pl.getPrix();
+            model.addAttribute("clients", clientService.getClients());
 
             return "tickets/ticketForm";
         }
@@ -99,26 +81,19 @@ public class TicketController {
         return serviceticket.deleteticket(id);
     }
 
-   /* @ExceptionHandler(NoSuchElementException.class)
-    public ResponseEntity<String> handleNoSuchElementException(NoSuchElementException e) {
-        return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
-    }
-
-
     @GetMapping("/revenue/period/{begin}/{end}")
-    public Double RevenuePeriod(@PathVariable("begin") Instant begin, @PathVariable("end") Instant end){
-        return serviceticket.revenudansperiode(begin, end);
+    public Double RevenuePeriod(@PathVariable("begin") LocalDateTime begin, @PathVariable("end") LocalDateTime end){
+        return serviceticket.revenuDansPeriode(begin, end);
     }
     @GetMapping("/client/fidel/{begin}/{end}")
-    public de.tekup.project.Modele.Client ClientplusFidel(@PathVariable("begin") Instant begin, @PathVariable("end") Instant end){
-        return serviceticket.ClientplusFidel(begin, end);
+    public Clients ClientplusFidel(@PathVariable("begin") LocalDateTime begin, @PathVariable("end") LocalDateTime end){
+        return serviceticket.ClientsplusFidel(begin, end);
     }
 
     @GetMapping("/top/plat/{begin}/{end}")
-    public MetReponse getTopPlat(@PathVariable("begin") Instant begin, @PathVariable("end") Instant end){
-        return serviceticket.mostBuyedPlat(begin,end);
+    public PlatRequest getTopPlat(@PathVariable("begin") LocalDateTime begin, @PathVariable("end") LocalDateTime end){
+        return platService.mostBuyedPlat(begin,end);
     }
-*/
 
 
 }
