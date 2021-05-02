@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Show entreess</title>
+    <title>Show plats</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}">
@@ -29,7 +29,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/tables">Nos tables</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="/entreess">entreess</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Dropdown
@@ -52,49 +54,55 @@
 
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+
+    <div class="col-md-4 col-md-offset-3">
+
+    <form  th:object="${entree}" th:action="@{'/entree/' +${entree.id}} " method="post">
+        <!--   <input type="hidden" th:field="*{id}"/>
+           <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+               <p>Please Correct Errors Below</p>
+           </div>-->
+
+        <div class="pannel-group">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-md-10 ">
-                            <h1 class="panel-title">Entrées</h1>
-                        </div>
-                        <div class="col-md-2">
-                            <a class="btn btn-default" href="" th:href="@{'/entree/add'}"
-                               role="button">Ajouter</a>
-
-                        </div>
-                    </div>
+                    <h1 class="panel-title">Add Entree Information</h1>
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive" >
-                        <table class="table table-hover">
-                            <thead class="thead-inverse">
-                            <tr>
-                                <th> ID </th>
-                                <th> nom </th>
-                                <th> Prix </th>
-                                <th> Voir </th>
-                                <th> Update </th>
-                                <th> Delete </th>
-                            </tr>
-                            </thead>
+                    <div class="row">
 
-                            <tr th:each="entreess: ${entrees}">
-                                <td th:text="${entreess.id}"> 124 </td>
-                                <td th:text="${entreess.nom}"> Taste Gooood </td>
-                                <td th:text="${entreess.prix}"> Taste Gooood </td>
-                                <td><a href="#" th:href="@{'/entrees/'+ ${entreess.id} +'/show'}">Voir</a> </td>
-                                <td> <a href="#" th:href="@{'/entrees/'+${entreess.id}+'/update'}">Update</a>
-                                <td> <a href="#" th:href="@{'/entrees/'+${entreess.id}+'/delete'}">Delete</a>
-                            </tr>
-                        </table>
+
+                        <div class="col-md-3 form-group" th:class="${#fields.hasErrors('nom')}
+                                ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                            <label>Nom:</label>
+                            <input type="text" class="form-control" th:field="*{nom}"/>
+                            <span class="help-block" th:if="${#fields.hasErrors('nom')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('nom')}" th:text="${err}"/>
+                                        </ul>
+                                    </span>
+                        </div>
+
+                        <div class="col-md-3 form-group" th:class="${#fields.hasErrors('prix')}
+                                ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                            <label>Prix:</label>
+                            <input type="number" step="0.01" class="form-control" th:field="*{prix}"/>
+                            <span class="help-block" th:if="${#fields.hasErrors('prix')}">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('prix')}" th:text="${err}"/>
+                                        </ul>
+                                    </span>
+                        </div>
+
+
+
+
                     </div>
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-    </div>
+    </form>
 </div>
-
-</body>
-</html>
+</div>
+    </div></div></body>

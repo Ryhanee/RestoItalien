@@ -4,6 +4,7 @@ import com.resto.dev.dto.DessertRequest;
 import com.resto.dev.dto.EntreeRequest;
 import com.resto.dev.dto.PlatRequest;
 import com.resto.dev.dto.TableeRequest;
+import com.resto.dev.models.Dessert;
 import com.resto.dev.models.Plat;
 import com.resto.dev.models.Ticket;
 import com.resto.dev.services.DessertService;
@@ -73,14 +74,14 @@ public String getShowPlat(@PathVariable("id") Long id, Model model) {
     @GetMapping("/dessert/add")
     public String newDesser(Long id, Model model) {
         DessertRequest dessert = new DessertRequest();
-        model.addAttribute("dessert",dessert);
+        model.addAttribute("desserts",dessert);
         return "plats/dessertForm";
     }
     @GetMapping("/entree/add")
     public String newEntree(Long id, Model model) {
         DessertRequest dessert = new DessertRequest();
-        model.addAttribute("dessert",dessert);
-        return "plats/dessertForm";
+        model.addAttribute("entree",dessert);
+        return "plats/entreeForm";
     }
     // save Ingredient
     @PostMapping("/plats/{id}")
@@ -117,5 +118,16 @@ public String getShowPlat(@PathVariable("id") Long id, Model model) {
         return "redirect:/plats";
     }
 
-
+    @GetMapping("/desserts/{id}/update")
+    public String updateDessert(@PathVariable("id") long id, Model model) {
+        Dessert dessert = dessert_service.getDessertById(id);
+        model.addAttribute("desserts", dessert);
+        return "plats/dessertForm";
+    }
+    @GetMapping("/entrees/{id}/update")
+    public String updateEntree(@PathVariable("id") long id, Model model) {
+        EntreeRequest req = entreeService.findPlatRequestById(id);
+        model.addAttribute("entree", req);
+        return "plats/entreeForm";
+    }
 }
