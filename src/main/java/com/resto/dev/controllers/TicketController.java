@@ -4,7 +4,9 @@ package com.resto.dev.controllers;
 import com.resto.dev.dto.PlatRequest;
 import com.resto.dev.dto.TableeRequest;
 import com.resto.dev.dto.TicketRequest;
+import com.resto.dev.models.Plat;
 import com.resto.dev.models.Ticket;
+import com.resto.dev.services.PlatService;
 import com.resto.dev.services.TableService;
 import com.resto.dev.services.TicketService;
 import lombok.AllArgsConstructor;
@@ -34,6 +36,7 @@ public class TicketController {
 
     private TicketService serviceticket;
     private TableService tableService;
+    private PlatService platService;
 
 
     @GetMapping
@@ -75,6 +78,7 @@ public class TicketController {
         ticket.setTable(new TableeRequest());
         model.addAttribute("tickets", ticket);
         model.addAttribute("tableList", tableService.listTables());
+        model.addAttribute("platsList", platService.getPlats());
         return "tickets/ticketForm";
     }
 
@@ -85,10 +89,14 @@ public class TicketController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("tickets", ticket);
             model.addAttribute("tableList", tableService.listTables());
+            model.addAttribute("platsList", platService.getPlats());
+//            Plat pl = new Plat();
+//            double prix =  pl.getPrix();
+
             return "tickets/ticketForm";
         }
         serviceticket.addTicket(ticket);
-        return "redirect:/tickets";
+        return "redirect:/tickets/{id}/show";
     }
 
     @PutMapping("/tickets/{id}")

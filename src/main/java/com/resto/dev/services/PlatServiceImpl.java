@@ -54,5 +54,13 @@ public class PlatServiceImpl implements PlatService {
         PlatRequest req = mapper.map(pl, PlatRequest.class);
         return req;
     }
+//
 
+
+//    public PlatRequest getPrice(double prix) {
+//        Plat pl =
+//
+//        PlatRequest req = mapper.map(pl, PlatRequest.class);
+//        return req;
+//    }
 }

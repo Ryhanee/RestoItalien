@@ -13,10 +13,35 @@
             th:src="@{/webjars/jquery/3.5.1/jquery.min.js}">
 
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
     <script
             src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
             th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+    <script>
+        // Total Price Calculator
+        function calc() {
+            // Get value from input
+            // let number = parseFloat($('#no-text').val() || 0);
+            let tots = 0;
+
+            // Add Checkbox values
+            $(".checks:checked").each(function() {
+                // tots += parseFloat($('.checks').val());
+                tots += parseFloat($(this).val());
+
+            });
+
+            // Update with new Number
+            $('#tots').val((tots).toFixed(2));
+        }
+
+        $(function() {
+            $(document).on('change', '.checks', calc);
+            calc();
+        });
+    </script>
 </head>
 <body>
 
@@ -37,8 +62,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-3 form-group" th:class="${#fields.hasErrors('nom')}
-                                ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
+                                <div class="col-md-6 form-group" >
                                     <label>Date:</label>
                                     <input type="datetime-local" class="form-control" th:field="*{date}"/>
                                     <span class="help-block" th:if="${#fields.hasErrors('date')}">
@@ -47,17 +71,36 @@
                                         </ul>
                                     </span>
                                 </div>
-                                <div class="col-md-3 form-group">
+                                <div class="col-md-6 form-group">
                                     <label>Table:</label>
-                                    <select class="form-control" name="table.id">
+                                    <select class="form-control" th:field="*{table.numero}">
                                         <option th:each="tables : ${tableList}"
                                                 th:value="${tables.numero}"
                                                 th:selected="${tables.numero.equals(tickets.getTable().numero)}"
                                                 th:text="${tables.numero}+': '+${tables.type}+' max '+${tables.nbCouvert}+' couverts '">Each</option>
                                     </select>
+                                    <label>Nombre des couverts</label>
+                                    <input type="number" th:field="*{nbCouvert}">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>Plats:</label>
+                                    <input type="checkbox"  class="checks" th:each="plats : ${platsList}" th:value="${plats.prix}"
+                                           th:text="${plats.nom}+': '+${plats.prix}" id="plat"
+                                           th:data-price="${plats.prix}" ><br>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>Addition</label>
+                                    <input type="text" id="tots" name="addition" th:field = "*{addition}">
+<!--                                    <span id="tots">0.00</span>-->
                                 </div>
 
+                                <div class="col-md-6 form-group">
+                                    <label>Clients:</label>
 
+
+                                    <input type="text" name="clients_id">
+                                    <!--                                    <span id="tots">0.00</span>-->
+                                </div>
 
                             </div>
                         </div>
@@ -68,5 +111,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>

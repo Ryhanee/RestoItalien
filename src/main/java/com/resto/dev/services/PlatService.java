@@ -13,5 +13,5 @@ public interface PlatService {
     void deleteById(Long id);
     PlatRequest savePlat(PlatRequest request);
     PlatRequest findPlatRequestById(Long id);
-
+//    public PlatRequest getPrice(double prix);
 }
