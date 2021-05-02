@@ -22,22 +22,9 @@ import java.util.List;
 @AllArgsConstructor
 public class TicketController {
 
-    /*
-    @GetMapping("/recipe/{id}/show")
-    public String getShowRecipe(@PathVariable("id") long id, Model model) {
-        model.addAttribute("recipe", recipeService.getRecipeById(id));
-        return "recipe/show";
-    }	@GetMapping("/recipe/{id}/show")
-    public String getShowRecipe(@PathVariable("id") long id, Model model) {
-        model.addAttribute("recipe", recipeService.getRecipeById(id));
-        return "recipe/show";
-    }
-    */
-
     private TicketService serviceticket;
     private TableService tableService;
     private PlatService platService;
-
 
     @GetMapping
     public List<Ticket> getAll(){
@@ -70,7 +57,11 @@ public class TicketController {
     }
 */
 
-
+    @GetMapping({"/tickets"})
+    public String getTables(Model model) {
+        model.addAttribute("tickets", serviceticket.getTickets());
+        return "tickets/index";
+    }
     // Add new Ingredient
     @GetMapping("/ticket/add")
     public String newTicket(Long numero, Model model) {

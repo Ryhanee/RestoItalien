@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Show plats</title>
+    <title>Show entreess</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}">
@@ -18,6 +18,38 @@
             th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Resto Italien</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/tables">Nos tables</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/entreess">entreess</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/desserts">Dessert</a></li>
+                        <li><a class="dropdown-item" href="/entrees">Entrees</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/tickets">Nos tickets</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
 
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
@@ -26,10 +58,10 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-10 ">
-                            <h1 class="panel-title">Plats</h1>
+                            <h1 class="panel-title">Entrées</h1>
                         </div>
                         <div class="col-md-2">
-                            <a class="btn btn-default" href="" th:href="@{'/plats/add'}"
+                            <a class="btn btn-default" href="" th:href="@{'/entreess/add'}"
                                role="button">Ajouter</a>
 
                         </div>
@@ -49,13 +81,13 @@
                             </tr>
                             </thead>
 
-                            <tr th:each="plats: ${plat}">
-                                <td th:text="${plats.id}"> 124 </td>
-                                <td th:text="${plats.nom}"> Taste Gooood </td>
-                                <td th:text="${plats.prix}"> Taste Gooood </td>
-                                <td><a href="#" th:href="@{'/plats/'+ ${plats.id} +'/show'}">Voir</a> </td>
-                                <!--                      <td> <a href="#" th:href="@{'/recipe/'+${recipeId}+'/ingredient/'+${ingredient.id}+'/update'}">Update</a>
-                                                      <td> <a href="#" th:href="@{'/recipe/'+${recipeId}+'/ingredient/'+${ingredient.id}+'/delete'}">Delete</a> -->
+                            <tr th:each="entreess: ${entrees}">
+                                <td th:text="${entreess.id}"> 124 </td>
+                                <td th:text="${entreess.nom}"> Taste Gooood </td>
+                                <td th:text="${entreess.prix}"> Taste Gooood </td>
+                                <td><a href="#" th:href="@{'/entrees/'+ ${entreess.id} +'/show'}">Voir</a> </td>
+                                <td> <a href="#" th:href="@{'/entrees/'+${entreess.id}+'/update'}">Update</a>
+                                <td> <a href="#" th:href="@{'/entrees/'+${entreess.id}+'/delete'}">Delete</a> -->
                             </tr>
                         </table>
                     </div>

@@ -14,7 +14,10 @@ public class IndexController {
 
     // call service
     private TicketService Tservices;
-
+    @GetMapping({"/"})
+    public String Hello() {
+        return "index";
+    }
 
 
 }

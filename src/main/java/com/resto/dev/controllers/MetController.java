@@ -3,7 +3,9 @@ package com.resto.dev.controllers;
 import com.resto.dev.dto.DessertRequest;
 import com.resto.dev.dto.EntreeRequest;
 import com.resto.dev.dto.PlatRequest;
+import com.resto.dev.dto.TableeRequest;
 import com.resto.dev.models.Plat;
+import com.resto.dev.models.Ticket;
 import com.resto.dev.services.DessertService;
 import com.resto.dev.services.EntreeService;
 import com.resto.dev.services.PlatService;
@@ -11,10 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -37,12 +36,12 @@ public class MetController {
     }
     @GetMapping({"/desserts"})
     public String getDesserts(Model model) {
-        model.addAttribute("dessert", dessert_service.getDesserts());
+        model.addAttribute("desserts", dessert_service.getDesserts());
         return "plats/desserts";
     }
     @GetMapping({"/entrees"})
     public String getEntree(Model model) {
-        model.addAttribute("entree", entreeService.getEntree());
+        model.addAttribute("entrees", entreeService.getEntree());
         return "plats/entree";
     }
 @GetMapping("/plats/{id}/show")
@@ -71,7 +70,18 @@ public String getShowPlat(@PathVariable("id") Long id, Model model) {
         model.addAttribute("entree", entree);
         return "plats/platform";
     }
-
+    @GetMapping("/dessert/add")
+    public String newDesser(Long id, Model model) {
+        DessertRequest dessert = new DessertRequest();
+        model.addAttribute("dessert",dessert);
+        return "plats/dessertForm";
+    }
+    @GetMapping("/entree/add")
+    public String newEntree(Long id, Model model) {
+        DessertRequest dessert = new DessertRequest();
+        model.addAttribute("dessert",dessert);
+        return "plats/dessertForm";
+    }
     // save Ingredient
     @PostMapping("/plats/{id}")
     public String saveOrUpdate(@Valid @ModelAttribute("plat")PlatRequest plat, BindingResult bindingResult , Long id, Model model) {
@@ -93,4 +103,19 @@ public String getShowPlat(@PathVariable("id") Long id, Model model) {
         entreeService.savePlat(entree);
         return "redirect:/entree";
     }
+
+    @GetMapping("/plats/{id}/update")
+    public String updatePlat(@PathVariable("id") long id, Model model) {
+        PlatRequest platreq = platservice.findPlatRequestById(id);
+        model.addAttribute("plats", platreq);
+        return "plats/platform";
+    }
+
+    @GetMapping("/plats/{id}/delete")
+    public String deletePlat(@PathVariable("id") long id) {
+        platservice.deleteById(id);
+        return "redirect:/plats";
+    }
+
+
 }
